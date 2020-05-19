@@ -1,0 +1,14 @@
+if sudo kubectl gets rs myweb-rs
+then 
+echo "already RS exists"
+else
+sudo kubectl create -f rs1.yml
+fi
+
+
+if sudo kubectl get service myweb-rs
+then 
+echo "already expose exists"
+else
+sudo kubectl expose rs myweb-rs --port=80 --type=NodePort
+fi
